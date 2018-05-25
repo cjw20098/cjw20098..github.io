@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  
+      <title>安装基于docker的gitlab中文社区版 - Hexo</title>
+  
+
+  
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- load loadjs.js -->
+  <script src="/libs/loadjs/dist/loadjs.min.js"></script>
+
+  <!-- load lightgallery -->
+<link rel="stylesheet" href="/css/lightgallery.css">
+<link rel="stylesheet" href="/libs/noty/lib/noty.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/taurus.css">
+    
+        <link rel="stylesheet" href="/css/scheme-taurus/animations.css">
+    
+
+
+ 
+
+  <!-- load font awesome 5 -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  </script>
+  <!-- load mathjax -->
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax//libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <!-- load js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/js/social-share.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+  <!-- include cookie.js -->
+  
+  
+
+  <!-- include comment system code -->
+  
+    <script src="//cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+ 
+
+<header id="header" class='header'>
+	<div class="header-title">
+		
+		<div class='header-logo'>
+			<a href='/'>
+				<img src='/images/theme-icon.svg' />
+			</a>
+		</div>
+		<div class='header-text'>
+			<h1>
+				<a href="/">Hexo</a>
+			</h1>
+			<subtitle>
+				
+			</subtitle>
+		</div>
+		
+	</div>
+	<div id='header-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+
+
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-line/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-line/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-line/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-line/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+</header>
+
+ 
+
+  
+
+
+
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div style="flex: 1;">
+      <style>
+    body {
+        background-color: white;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+    
+    
+        
+    
+
+    
+        
+    
+
+
+
+
+
+
+
+
+
+<article class="article" id="/2018/05/25/安装基于docker的gitlab中文社区版/" data-name='安装基于docker的gitlab中文社区版' data-version="">
+
+    <!-- Title -->
+    <div class='article-header'>
+         
+         <h1 class='article-title'>
+            <a href="/2018/05/25/安装基于docker的gitlab中文社区版/">
+                安装基于Docker的gitlab中文社区版
+            </a>
+        </h1>
+        <!-- TODO: support nested categories,display them nicely -->
+        
+    </div>
+    
+    <!-- Date and Author -->
+    <div class='article-meta'>
+    <ul>
+            <li><i class='fa fa-calendar'></i> 2018-05-25</li>
+            
+            <li><i class="fa fa-user"></i> John Doe</li>
+            
+            <li><i class="fas fa-copyright"></i>
+            
+                
+                
+            
+            
+                <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY-NC-ND 4.0</a>
+            
+            </li>
+    </ul>
+    
+<div class="tags">
+	
+		
+			<label class='tag-1'><a href="/tags/docker-linux-nginx-https-gitlab/">Docker linux nginx https gitlab</a></label>
+		
+	
+	</div>
+
+    </div>
+    <div class='article-cards'>
+        <!-- Author Card -->
+        <!---
+        <div class='Card-article Card-author'>
+            <div class='card-title'>
+                <h3></h3>
+            </div>
+            <div class='card-content'>
+                    <div class="author-meta">
+                            <div class='author-figure'>
+                                <img src="" alt="">
+                            </div>
+                            <div class='author-name'>
+                                John Doe
+                            </div>
+                        </div>
+                        <div class="author-ai">
+                            <div class='author-intro'>
+                                <!-- TODO: auto generating author description -->
+                                <!-- 
+                            </div>
+                            <div class="author-articles">
+                                <!-- TODO: auto generating author articles -->
+                                <!-- <ul>
+                                    <li>Article 1</li>
+                                    <li>Article 2</li>
+                                    <li>Article 3</li>
+                                    <li>Article 4</li>
+                                    <li>Article 5</li>
+                                    <li>Article 6</li>
+                                </ul>
+                            </div>
+                        </div>
+            </div>
+            
+        </div> -->
+
+        <!-- Visit Card -->
+        <!-- <div class="Card-article Card-visit"> -->
+            <!-- <div class="card-title">
+  <h3>Post Visit</h3>
+</div>
+<div class="card-chart">
+  <div id='chart-post-visit'></div>
+</div> -->
+        <!-- </div> -->
+        
+        <!-- Auto Excerpt Card -->
+        <!-- <div class="Card-article Card-excerpt">
+            <div class="card-title">
+  <h3>Quick Read</h3>
+</div>
+<div class="card-text">
+  <p id='text-post-summary'>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。通过 uname -r 命令查看你当前的内核版本1uname -r
+centos7.2版本
+3.10.0-514.26.2.el7.x86_64
+###一、首先安装docker
+１、初步安装和启动docker123yum update -yyum -y install dockersystemctl start docker
+２、设置镜像1234vi /etc/docker/daemon.json&#123; ...</p>
+</div>
+        </div> -->
+    </div>
+    
+    <!-- Gallery -->
+    <!-- TODO: add a slider to gallery -->
+    
+
+    <!-- Content -->
+    <!-- TODO: support table of content -->
+    <div class="article-toc" id='article-toc'>
+        
+
+
+
+
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-line/toc.svg" alt="">
+</div>
+
+    </div>
+    <div class='article-content'>
+    <p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。通过 uname -r 命令查看你当前的内核版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure></p>
+<pre><code>centos7.2版本
+3.10.0-514.26.2.el7.x86_64
+</code></pre><p>###一、首先安装docker</p>
+<h5 id="１、初步安装和启动docker"><a href="#１、初步安装和启动docker" class="headerlink" title="１、初步安装和启动docker"></a>１、初步安装和启动docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br><span class="line">yum -y install docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<h5 id="２、设置镜像"><a href="#２、设置镜像" class="headerlink" title="２、设置镜像"></a>２、设置镜像</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://aj2rgad5.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="３、开放管理端口映射"><a href="#３、开放管理端口映射" class="headerlink" title="３、开放管理端口映射"></a>３、开放管理端口映射</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /lib/systemd/system/docker.service</span><br><span class="line">将第11行的ExecStart=/usr/bin/dockerd，替换为：</span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H tcp://0.0.0.0:7654</span><br><span class="line">2375是管理端口，7654是备用端口</span><br><span class="line">在~/.bashrc中写入docker管理端口</span><br><span class="line">export DOCKER_HOST=tcp://0.0.0.0:2375</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h5 id="４、重启docker并查看docker版本"><a href="#４、重启docker并查看docker版本" class="headerlink" title="４、重启docker并查看docker版本"></a>４、重启docker并查看docker版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker.service</span><br><span class="line">docker version</span><br></pre></td></tr></table></figure>
+<h5 id="５、测试docker是否正常安装和运行"><a href="#５、测试docker是否正常安装和运行" class="headerlink" title="５、测试docker是否正常安装和运行"></a>５、测试docker是否正常安装和运行</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<h5 id="６、查看结果"><a href="#６、查看结果" class="headerlink" title="６、查看结果"></a>６、查看结果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br></pre></td></tr></table></figure>
+<p>#####　７、启动并加入开机启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br><span class="line">$ sudo systemctl enable docker</span><br></pre></td></tr></table></figure></p>
+<p>#####　８、安装时报错或因之前安装过旧版本docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Transaction check error:</span><br><span class="line">file /usr/bin/docker from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd-shim from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/dockerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>#####　９、卸载旧版本的包，再次安装docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase　docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure></p>
+<p>###二、安装nginx</p>
+<h5 id="１、查看CentOS的版本"><a href="#１、查看CentOS的版本" class="headerlink" title="１、查看CentOS的版本"></a>１、查看CentOS的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用一下命令来查看一下当前系统的版本</span><br><span class="line">[root@localhost ~]# cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br></pre></td></tr></table></figure>
+<h5 id="2、查看CentOS的版本"><a href="#2、查看CentOS的版本" class="headerlink" title="2、查看CentOS的版本"></a>2、查看CentOS的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在 CentOS 系统上安装 Nginx ，你得先去添加一个资源库，像这样：</span><br><span class="line"></span><br><span class="line">vim /etc/yum.repos.d/nginx.repo</span><br><span class="line"></span><br><span class="line">使用vim命令去打开 /etc/yum.repos.d/nginx.repo,如果nginx.repo不存在，就会去创建一个这样的文件，打开以后按一下小键,进入编辑模式,然后复制粘贴下面这几行代码，完成以后按 esc 键退出，再输入:wq （保存并退出）</span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<h4 id="3、yum-命令去安装-nginx，且需要安装SSL模块"><a href="#3、yum-命令去安装-nginx，且需要安装SSL模块" class="headerlink" title="3、yum 命令去安装 nginx，且需要安装SSL模块"></a>3、yum 命令去安装 nginx，且需要安装SSL模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">完成上边操作以后，我们就可以使用 yum 命令去安装 nginx了</span><br><span class="line">yum update</span><br><span class="line">yum -y install gcc gcc-c++ make automake autoconf libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel</span><br></pre></td></tr></table></figure>
+<h5 id="在这里下载nginxwen’d’ban，下载的文件放在-usr-local解压，cd进入解压后的文件夹，执行以下命令"><a href="#在这里下载nginxwen’d’ban，下载的文件放在-usr-local解压，cd进入解压后的文件夹，执行以下命令" class="headerlink" title="在这里下载nginxwen’d’ban，下载的文件放在/usr/local解压，cd进入解压后的文件夹，执行以下命令"></a>在这里下载nginxwen’d’ban，下载的文件放在/usr/local解压，cd进入解压后的文件夹，执行以下命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre</span><br><span class="line">make -j 128 &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h4 id="4、安装完成"><a href="#4、安装完成" class="headerlink" title="4、安装完成"></a>4、安装完成</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: fastestmirror, langpacks</span><br><span class="line">nginx                          | 2.9 kB   00:00   </span><br><span class="line">nginx/7/x86_64/primary_db                 | 14 kB  00:01   </span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirrors.sina.cn</span><br><span class="line"> * extras: mirrors.btte.net</span><br><span class="line"> * updates: mirrors.sina.cn</span><br><span class="line">Resolving Dependencies</span><br><span class="line">--&gt; Running transaction check</span><br><span class="line">---&gt; Package nginx.x86_64 1:1.10.1-1.el7.ngx will be installed</span><br><span class="line">--&gt; Finished Dependency Resolution</span><br><span class="line">Dependencies Resolved</span><br><span class="line">================================================================================</span><br><span class="line"> Package    Arch      Version            Repository   Size</span><br><span class="line">================================================================================</span><br><span class="line">Installing:</span><br><span class="line"> nginx     x86_64     1:1.10.1-1.el7.ngx      nginx     640 k</span><br><span class="line">Transaction Summary</span><br><span class="line">================================================================================</span><br><span class="line">Install 1 Package</span><br><span class="line">Total download size: 640 k</span><br><span class="line">Installed size: 2.1 M</span><br><span class="line">Is this ok [y/d/N]: y</span><br><span class="line">Downloading packages:</span><br><span class="line">nginx-1.10.1-1.el7.ngx.x86_64.rpm             | 640 kB  00:27   </span><br><span class="line">Running transaction check</span><br><span class="line">Running transaction test</span><br><span class="line">Transaction test succeeded</span><br><span class="line">Running transaction</span><br><span class="line"> Installing : 1:nginx-1.10.1-1.el7.ngx.x86_64               1/1 </span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Thanks for using nginx!</span><br><span class="line">Please find the official documentation for nginx here:</span><br><span class="line">* http://nginx.org/en/docs/</span><br><span class="line">Commercial subscriptions for nginx are available on:</span><br><span class="line">* http://nginx.com/products/</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line"> Verifying : 1:nginx-1.10.1-1.el7.ngx.x86_64               1/1 </span><br><span class="line">Installed:</span><br><span class="line"> nginx.x86_64 1:1.10.1-1.el7.ngx                        </span><br><span class="line">Complete!</span><br></pre></td></tr></table></figure>
+<h4 id="5、测试nginx配置文件"><a href="#5、测试nginx配置文件" class="headerlink" title="5、测试nginx配置文件"></a>5、测试nginx配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当你执行 nginx -t 得时候,nginx会去测试你得配置文件得语法,并告诉你配置文件是否写得正确,同时也告诉了你配置文件得路径：</span><br><span class="line">nginx -t</span><br><span class="line">打印如下：</span><br><span class="line">nginx: the configuration file /etc/nginx/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /etc/nginx/nginx.conf test is successful</span><br><span class="line">说明配置文件成功！</span><br></pre></td></tr></table></figure>
+<h4 id="6、配置nginx"><a href="#6、配置nginx" class="headerlink" title="6、配置nginx"></a>6、配置nginx</h4><pre><code>假如你已经申请到了https证书,而且有nginx下的版本，通常是两个文件,一个是.key后缀的文件,为证书的私钥,另一个是.pem后缀的文件,为证书的公钥。
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">nginx.conf 配置如下：</span><br><span class="line">    </span><br><span class="line">    upstream 主机域名 &#123;</span><br><span class="line">       server 主机IP:port;</span><br><span class="line">    &#125;</span><br><span class="line">    # HTTPS server</span><br><span class="line">    #</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       443 ssl;</span><br><span class="line">        server_name  主机域名;</span><br><span class="line"></span><br><span class="line">        ssl_certificate      /usr/local/nginx/cert/20180111.pem;</span><br><span class="line">        ssl_certificate_key  /usr/local/nginx/cert/20180111.key;</span><br><span class="line"></span><br><span class="line">        ssl_session_cache    shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">        ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">	    proxy_pass   http://主机域名;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果要让用户用http协议访问时自动跳转https，则还需加上如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">     listen 80;</span><br><span class="line">     server_name www.server.com;</span><br><span class="line">     rewrite ^(.*)$ https://www.server.com;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>就是一个url重写而已,注意要把<a href="http://www.server.com改成你实际的主机名。配置完后，用如下命令测试下配置文件有没有错误。如果没有错误，用如下命令" target="_blank" rel="noopener">www.server.com改成你实际的主机名。配置完后，用如下命令测试下配置文件有没有错误。如果没有错误，用如下命令</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -t //查看配置是否正确</span><br><span class="line">nginx -s reload //服务重启</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>重启nginx，然后用浏览器测试下用https协议能否正常访问服务器。 如果不能访问，请确认下证书路径有没有问题</p>
+</blockquote>
+<h4 id="7、开启服务器的防火墙"><a href="#7、开启服务器的防火墙" class="headerlink" title="7、开启服务器的防火墙"></a>7、开启服务器的防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开通443端口</span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line"></span><br><span class="line">确认是否开通</span><br><span class="line">firewall-cmd --list-ports //如果可以看到443/tcp字样就说明开通了</span><br><span class="line"></span><br><span class="line">重新加载下防火墙配置</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">执行完该步骤，大多数服务器应该可以正常用https协议访问。</span><br></pre></td></tr></table></figure>
+<h4 id="8、阿里云服务器"><a href="#8、阿里云服务器" class="headerlink" title="8、阿里云服务器"></a>8、阿里云服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需要该步骤的原因是因为云服务器的安全组规则上没有开通相关的端口。</span><br><span class="line">操作步骤：</span><br><span class="line">云服务器ECS----&gt;安全组----&gt;配置规则----&gt;添加安全组规则</span><br></pre></td></tr></table></figure>
+<p>####注：以前是宿主机安装nginx,当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载</p>
+<p>###三、安装gitlab中文社区版</p>
+<h4 id="1、先查看docker版本以及状态"><a href="#1、先查看docker版本以及状态" class="headerlink" title="1、先查看docker版本以及状态"></a>1、先查看docker版本以及状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker version</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>应该会显示类似下面这样的信息。Docker客户端的版本最好在1.10以上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Client:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26 (minimum version 1.12)</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: false</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="2、下载gitlab社区中文版镜像"><a href="#2、下载gitlab社区中文版镜像" class="headerlink" title="2、下载gitlab社区中文版镜像"></a>2、下载gitlab社区中文版镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull beginor/gitlab-ce:10.7.3-ce.0</span><br></pre></td></tr></table></figure>
+<h4 id="3、启动gitlab"><a href="#3、启动gitlab" class="headerlink" title="3、启动gitlab"></a>3、启动gitlab</h4><blockquote>
+<p>用下面的命令启动一个默认配置的Gitlab。如果我们只在本机测试使用的话，将hostname替换为localhost。如果需要让外部系统也能访问的话使用外网IP地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">--detach \</span><br><span class="line">--publish 8443:443 --publish 8888:80 --publish 2201:22 \</span><br><span class="line">--name gitlab \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">--volume /srv/gitlab/config:/etc/gitlab \</span><br><span class="line">--volume /srv/gitlab/logs:/var/log/gitlab \</span><br><span class="line">--volume /srv/gitlab/data:/var/opt/gitlab \</span><br><span class="line">beginor/gitlab-ce:10.7.3-ce.0</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>首次启动可能比较慢，需要等待一分钟左右的时间。我们可以使用sudo docker ps命令查看当前所有Docker容器的状态。当它的状态由starting变为运行时间时，说明成功启动了。我们直接使用上面配置的IP地址（如localhost）在浏览器中访问即可。</p>
+<p>初次使用需要我们创建默认管理员密码，随便指定一个就行了。然后我们需要注册一个普通用户。以后的使用方法和Github这样的工具很相似了。</p>
+<h4 id="4、配置gitlab"><a href="#4、配置gitlab" class="headerlink" title="4、配置gitlab"></a>4、配置gitlab</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gitlab默认密码</span><br><span class="line">sudo chmod -R o+x /var/opt/gitlab/gitlab-rails</span><br><span class="line">Username: root</span><br><span class="line">Password: 5iveL!fe </span><br><span class="line">修改gitlab配置文件</span><br><span class="line">vim /etc/gitlab/gitlab.rb</span><br></pre></td></tr></table></figure>
+<h4 id="5、修改密码"><a href="#5、修改密码" class="headerlink" title="5、修改密码"></a>5、修改密码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">以docker方式启动的，先执行docker exec -it &lt;容器id&gt;bash进入容器之中。</span><br><span class="line">gitlab-rails console</span><br><span class="line">user = User.where(username: ‘root’).first</span><br><span class="line">user.password = ‘password’</span><br><span class="line">user.save!</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+    
+        <div class="article-comment" id='article-comment'>
+            
+
+<h1>Comment</h1>
+
+  
+  
+    <div id="comment-not-available">
+      Not available
+      <p><strong>For site maintainer: Please provide <code>appId</code> and <code>appKey</code> in your <code>_data/cutie.yml</code> file for <code>valine</code> comment system.</strong></p>
+    </div>
+  
+
+
+        </div>
+        
+</article>
+  </div>
+
+  
+
+<footer id='footer'>
+    <div class='footer-copyright'>
+        <div>
+            <p> Copyright by <a href="">John Doe </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://qutang.github.io/cutie/">Cutie 2.0.8-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
+        </div>
+    </div>
+    
+    <div class='footer-social'>
+        
+    </div>
+</footer>
+
+  <br>
+
+  <div id="footer-nav" class='footer-nav'>
+		
+
+
+
+<nav id="nav">
+	
+	
+	
+	<div class='nav-item' id='nav-item-toc'>
+		
+
+
+
+
+<div class="toc-button" onclick='toggleTOC(event);' ontouchstart='toggleTOC(event);'>
+    <img src="/images/icons/blue-line/toc.svg" alt="">
+</div>
+
+	</div>
+	
+	<div class='nav-item' id='nav-item-archive'>
+		
+				<div class='nav-icon'>
+				
+			<a href="/archives/" title='Archives'>
+			<img src="/images/icons/blue-line/archive.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class='nav-item' id='nav-item-search'>
+		
+		<div class='nav-icon'>
+		
+			<a href="/search/" title='Search'>
+			<img src="/images/icons/blue-line/search.svg" alt="">
+			</a>
+		</div>
+	</div>
+	<div class="nav-item" id='nav-item-more'>
+		<div class="nav-icon">
+				<a href='#' onclick='onClickMenuIcon(event);' ontouchstart='onClickMenuIcon(event);'>
+				<img src="/images/icons/blue-line/menu.svg" alt="">
+				</a>
+		</div>
+		<div class="nav-more-menu">
+		
+		
+	</div>
+	</div>
+</nav>
+
+	</div>
+
+  
+
+
+
+    
+
+
+
+
+
+
+
+    <script src="/js/lightgallery.min.js"></script>
+<script src="/js/lg-zoom.min.js"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $("#lightgallery").lightGallery(); 
+        $(".article-content img").each(function(){
+            console.log($(this).attr('src'))
+            $(this).attr('data-src', $(this).attr('src')).lightGallery({
+                selector: 'this'
+            })
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+<!-- <script src="/js/post.js"></script> -->
+
+<script src="/js/headroom.min.js"></script>
+
+<script data-no-instant type='text/javascript'>
+
+initHeadroom();
+
+changeLayoutOnTouchScreen();
+
+// 
+// var post = new Post('', '');
+// post.getCommentCount(window.location.pathname, function(count){
+//     $('#article-comment-count').text(count);
+// });
+// post.addVisitRecord(window.location.pathname, userip);
+// post.getVisitCount(window.location.pathname, function(count){
+//     $('#article-visit-count').text(count);
+// });
+
+// 
+</script>
+
+<script type='text/javascript'>
+
+  
+  // update cookie if this page is opened (directly)
+  loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
+  loadjs.ready('post-version', function(){
+    
+    new Postv2('hashit_c36b957c5989d1515ef82aa75e5f48860827dbcc35835d3bb69260cce548f5aa').update('hashit_feb972f4fd8bf8e262a6cfe7e852e8d92539924448f7c2650b81c45e3efc0cdb', function(){});
+  });
+  
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
