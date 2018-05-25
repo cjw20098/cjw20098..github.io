@@ -123,7 +123,7 @@ crossorigin="anonymous"></script>
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='归档'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-line/archive.svg" alt="">
 			</a>
 		</div>
@@ -132,7 +132,7 @@ crossorigin="anonymous"></script>
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='搜索'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-line/search.svg" alt="">
 			</a>
 		</div>
@@ -302,8 +302,7 @@ crossorigin="anonymous"></script>
   <p id='text-post-summary'>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。通过 uname -r 命令查看你当前的内核版本1uname -r
 centos7.2版本
 3.10.0-514.26.2.el7.x86_64
-###一、首先安装docker
-１、初步安装和启动docker123yum update -yyum -y install dockersystemctl start docker
+一、首先安装docker１、初步安装和启动docker123yum update -yyum -y install dockersystemctl start docker
 ２、设置镜像1234vi /etc/docker/daemon.json&#123; ...</p>
 </div>
         </div> -->
@@ -327,21 +326,20 @@ centos7.2版本
 
     </div>
     <div class='article-content'>
-    <p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。通过 uname -r 命令查看你当前的内核版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure></p>
+    <hr>
+<p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。通过 uname -r 命令查看你当前的内核版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure></p>
 <pre><code>centos7.2版本
 3.10.0-514.26.2.el7.x86_64
-</code></pre><p>###一、首先安装docker</p>
-<h5 id="１、初步安装和启动docker"><a href="#１、初步安装和启动docker" class="headerlink" title="１、初步安装和启动docker"></a>１、初步安装和启动docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br><span class="line">yum -y install docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="一、首先安装docker"><a href="#一、首先安装docker" class="headerlink" title="一、首先安装docker"></a>一、首先安装docker</h4><h5 id="１、初步安装和启动docker"><a href="#１、初步安装和启动docker" class="headerlink" title="１、初步安装和启动docker"></a>１、初步安装和启动docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update -y</span><br><span class="line">yum -y install docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
 <h5 id="２、设置镜像"><a href="#２、设置镜像" class="headerlink" title="２、设置镜像"></a>２、设置镜像</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://aj2rgad5.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="３、开放管理端口映射"><a href="#３、开放管理端口映射" class="headerlink" title="３、开放管理端口映射"></a>３、开放管理端口映射</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /lib/systemd/system/docker.service</span><br><span class="line">将第11行的ExecStart=/usr/bin/dockerd，替换为：</span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H tcp://0.0.0.0:7654</span><br><span class="line">2375是管理端口，7654是备用端口</span><br><span class="line">在~/.bashrc中写入docker管理端口</span><br><span class="line">export DOCKER_HOST=tcp://0.0.0.0:2375</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
 <h5 id="４、重启docker并查看docker版本"><a href="#４、重启docker并查看docker版本" class="headerlink" title="４、重启docker并查看docker版本"></a>４、重启docker并查看docker版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker.service</span><br><span class="line">docker version</span><br></pre></td></tr></table></figure>
 <h5 id="５、测试docker是否正常安装和运行"><a href="#５、测试docker是否正常安装和运行" class="headerlink" title="５、测试docker是否正常安装和运行"></a>５、测试docker是否正常安装和运行</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
 <h5 id="６、查看结果"><a href="#６、查看结果" class="headerlink" title="６、查看结果"></a>６、查看结果</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br></pre></td></tr></table></figure>
-<p>#####　７、启动并加入开机启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br><span class="line">$ sudo systemctl enable docker</span><br></pre></td></tr></table></figure></p>
-<p>#####　８、安装时报错或因之前安装过旧版本docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Transaction check error:</span><br><span class="line">file /usr/bin/docker from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd-shim from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/dockerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br></pre></td></tr></table></figure></p>
-<p>#####　９、卸载旧版本的包，再次安装docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase　docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure></p>
-<p>###二、安装nginx</p>
-<h5 id="１、查看CentOS的版本"><a href="#１、查看CentOS的版本" class="headerlink" title="１、查看CentOS的版本"></a>１、查看CentOS的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用一下命令来查看一下当前系统的版本</span><br><span class="line">[root@localhost ~]# cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br></pre></td></tr></table></figure>
+<h5 id="７、启动并加入开机启动"><a href="#７、启动并加入开机启动" class="headerlink" title="７、启动并加入开机启动"></a>７、启动并加入开机启动</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br><span class="line">$ sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+<h5 id="８、安装时报错或因之前安装过旧版本docker"><a href="#８、安装时报错或因之前安装过旧版本docker" class="headerlink" title="８、安装时报错或因之前安装过旧版本docker"></a>８、安装时报错或因之前安装过旧版本docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Transaction check error:</span><br><span class="line">file /usr/bin/docker from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/docker-containerd-shim from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">file /usr/bin/dockerd from install of docker-ce-17.12.0.ce-1.el7.centos.x86_64 conflicts with file from package docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br></pre></td></tr></table></figure>
+<h5 id="９、卸载旧版本的包，再次安装docker"><a href="#９、卸载旧版本的包，再次安装docker" class="headerlink" title="９、卸载旧版本的包，再次安装docker"></a>９、卸载旧版本的包，再次安装docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum erase　docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+<h3 id="二、安装nginx"><a href="#二、安装nginx" class="headerlink" title="二、安装nginx"></a>二、安装nginx</h3><h5 id="１、查看CentOS的版本"><a href="#１、查看CentOS的版本" class="headerlink" title="１、查看CentOS的版本"></a>１、查看CentOS的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用一下命令来查看一下当前系统的版本</span><br><span class="line">[root@localhost ~]# cat /etc/redhat-release</span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br></pre></td></tr></table></figure>
 <h5 id="2、查看CentOS的版本"><a href="#2、查看CentOS的版本" class="headerlink" title="2、查看CentOS的版本"></a>2、查看CentOS的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在 CentOS 系统上安装 Nginx ，你得先去添加一个资源库，像这样：</span><br><span class="line"></span><br><span class="line">vim /etc/yum.repos.d/nginx.repo</span><br><span class="line"></span><br><span class="line">使用vim命令去打开 /etc/yum.repos.d/nginx.repo,如果nginx.repo不存在，就会去创建一个这样的文件，打开以后按一下小键,进入编辑模式,然后复制粘贴下面这几行代码，完成以后按 esc 键退出，再输入:wq （保存并退出）</span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
 <h4 id="3、yum-命令去安装-nginx，且需要安装SSL模块"><a href="#3、yum-命令去安装-nginx，且需要安装SSL模块" class="headerlink" title="3、yum 命令去安装 nginx，且需要安装SSL模块"></a>3、yum 命令去安装 nginx，且需要安装SSL模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">完成上边操作以后，我们就可以使用 yum 命令去安装 nginx了</span><br><span class="line">yum update</span><br><span class="line">yum -y install gcc gcc-c++ make automake autoconf libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel</span><br></pre></td></tr></table></figure>
 <h5 id="在这里下载nginxwen’d’ban，下载的文件放在-usr-local解压，cd进入解压后的文件夹，执行以下命令"><a href="#在这里下载nginxwen’d’ban，下载的文件放在-usr-local解压，cd进入解压后的文件夹，执行以下命令" class="headerlink" title="在这里下载nginxwen’d’ban，下载的文件放在/usr/local解压，cd进入解压后的文件夹，执行以下命令"></a>在这里下载nginxwen’d’ban，下载的文件放在/usr/local解压，cd进入解压后的文件夹，执行以下命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre</span><br><span class="line">make -j 128 &amp;&amp; make install</span><br></pre></td></tr></table></figure>
@@ -360,13 +358,9 @@ centos7.2版本
 </blockquote>
 <h4 id="7、开启服务器的防火墙"><a href="#7、开启服务器的防火墙" class="headerlink" title="7、开启服务器的防火墙"></a>7、开启服务器的防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开通443端口</span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line"></span><br><span class="line">确认是否开通</span><br><span class="line">firewall-cmd --list-ports //如果可以看到443/tcp字样就说明开通了</span><br><span class="line"></span><br><span class="line">重新加载下防火墙配置</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">执行完该步骤，大多数服务器应该可以正常用https协议访问。</span><br></pre></td></tr></table></figure>
 <h4 id="8、阿里云服务器"><a href="#8、阿里云服务器" class="headerlink" title="8、阿里云服务器"></a>8、阿里云服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">需要该步骤的原因是因为云服务器的安全组规则上没有开通相关的端口。</span><br><span class="line">操作步骤：</span><br><span class="line">云服务器ECS----&gt;安全组----&gt;配置规则----&gt;添加安全组规则</span><br></pre></td></tr></table></figure>
-<p>####注：以前是宿主机安装nginx,当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载</p>
-<p>###三、安装gitlab中文社区版</p>
-<h4 id="1、先查看docker版本以及状态"><a href="#1、先查看docker版本以及状态" class="headerlink" title="1、先查看docker版本以及状态"></a>1、先查看docker版本以及状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker version</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>应该会显示类似下面这样的信息。Docker客户端的版本最好在1.10以上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Client:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26 (minimum version 1.12)</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: false</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h4 id="2、下载gitlab社区中文版镜像"><a href="#2、下载gitlab社区中文版镜像" class="headerlink" title="2、下载gitlab社区中文版镜像"></a>2、下载gitlab社区中文版镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull beginor/gitlab-ce:10.7.3-ce.0</span><br></pre></td></tr></table></figure>
+<h4 id="注：以前是宿主机安装nginx-当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载"><a href="#注：以前是宿主机安装nginx-当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载" class="headerlink" title="注：以前是宿主机安装nginx,当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载"></a>注：以前是宿主机安装nginx,当然也可以用docker版的nginx，不过需要将配置文件和日志进行挂载</h4><h3 id="三、安装gitlab中文社区版"><a href="#三、安装gitlab中文社区版" class="headerlink" title="三、安装gitlab中文社区版"></a>三、安装gitlab中文社区版</h3><h4 id="1、先查看docker版本以及状态"><a href="#1、先查看docker版本以及状态" class="headerlink" title="1、先查看docker版本以及状态"></a>1、先查看docker版本以及状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker version</span><br></pre></td></tr></table></figure>
+<p> 应该会显示类似下面这样的信息。Docker客户端的版本最好在1.10以上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Client:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      1.13.1</span><br><span class="line"> API version:  1.26 (minimum version 1.12)</span><br><span class="line"> Go version:   go1.7.5</span><br><span class="line"> Git commit:   092cba3727</span><br><span class="line"> Built:        Sun Feb 12 02:40:56 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: false</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、下载gitlab社区中文版镜像"><a href="#2、下载gitlab社区中文版镜像" class="headerlink" title="2、下载gitlab社区中文版镜像"></a>2、下载gitlab社区中文版镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull beginor/gitlab-ce:10.7.3-ce.0</span><br></pre></td></tr></table></figure>
 <h4 id="3、启动gitlab"><a href="#3、启动gitlab" class="headerlink" title="3、启动gitlab"></a>3、启动gitlab</h4><blockquote>
 <p>用下面的命令启动一个默认配置的Gitlab。如果我们只在本机测试使用的话，将hostname替换为localhost。如果需要让外部系统也能访问的话使用外网IP地址。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">--detach \</span><br><span class="line">--publish 8443:443 --publish 8888:80 --publish 2201:22 \</span><br><span class="line">--name gitlab \</span><br><span class="line">--restart unless-stopped \</span><br><span class="line">--volume /srv/gitlab/config:/etc/gitlab \</span><br><span class="line">--volume /srv/gitlab/logs:/var/log/gitlab \</span><br><span class="line">--volume /srv/gitlab/data:/var/opt/gitlab \</span><br><span class="line">beginor/gitlab-ce:10.7.3-ce.0</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -383,7 +377,7 @@ centos7.2版本
         <div class="article-comment" id='article-comment'>
             
 
-<h1>评论</h1>
+<h1>Comment</h1>
 
   
   
@@ -404,8 +398,8 @@ centos7.2版本
 <footer id='footer'>
     <div class='footer-copyright'>
         <div>
-            <p> 版权所有 <a href="">Jrian Chen </a> @ 2018</p>
-            <p>设计: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> 和 <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; 主题: <a href="https://qutang.github.io/cutie/">Cutie 2.0.8-Taurus</a> &bull; 由 <a href="http://hexo.io">Hexo.</a> 强力驱动</p>
+            <p> Copyright by <a href="">Jrian Chen </a> @ 2018</p>
+            <p>Designed by: <i class="fas fa-paint-brush"></i> <a href="https://moober.cn">Moober</a> and <i class="fas fa-graduation-cap"></i> <a href="https://qutang.github.io">Qu Tang</a> &bull; Theme: <a href="https://qutang.github.io/cutie/">Cutie 2.0.8-Taurus</a> &bull; Powered by <a href="http://hexo.io">Hexo.</a></p>
         </div>
     </div>
     
@@ -441,7 +435,7 @@ centos7.2版本
 		
 				<div class='nav-icon'>
 				
-			<a href="/archives/" title='归档'>
+			<a href="/archives/" title='Archives'>
 			<img src="/images/icons/blue-line/archive.svg" alt="">
 			</a>
 		</div>
@@ -450,7 +444,7 @@ centos7.2版本
 		
 		<div class='nav-icon'>
 		
-			<a href="/search/" title='搜索'>
+			<a href="/search/" title='Search'>
 			<img src="/images/icons/blue-line/search.svg" alt="">
 			</a>
 		</div>
@@ -533,7 +527,7 @@ changeLayoutOnTouchScreen();
   loadjs(['/libs/jshashes/hashes.min.js', '/libs/js-cookie/src/js.cookie.js', '/js/post.v2.js'], 'post-version');
   loadjs.ready('post-version', function(){
     
-    new Postv2('hashit_c36b957c5989d1515ef82aa75e5f48860827dbcc35835d3bb69260cce548f5aa').update('hashit_feb972f4fd8bf8e262a6cfe7e852e8d92539924448f7c2650b81c45e3efc0cdb', function(){});
+    new Postv2('hashit_c36b957c5989d1515ef82aa75e5f48860827dbcc35835d3bb69260cce548f5aa').update('hashit_b340eeb6524c4b9fa4ae5610fc1e714f01fa59668040ed1c433375afe0ad04d8', function(){});
   });
   
 </script>
